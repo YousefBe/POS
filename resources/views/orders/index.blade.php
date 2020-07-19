@@ -49,17 +49,14 @@
                                 <td>{{$order->created_at->toFormattedDateString()}}</td>
 
                                 <td>
-                                    <form action="{{route('order.destroy' , $order->id)}}" method="POST"
-                                        style="display: inline-block;">
-                                        @method('DELETE')
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-
-                                        <a href="{{route('client.order.edit',[$client->id,$order->id])}}"
-                                            class="btn btn-info btn-sm">update</a>
+                                    <button data-toggle="modal" data-target="#DeleteModal"
+                                        class="btn btn-danger DeleteModal"
+                                        data-url="{{url('order',$order->id)}}">Delete</button>
+                                    @include('partials.Modals._deleteModal')
 
 
-
+                                    <a href="{{route('client.order.edit',[$client->id,$order->id])}}"
+                                        class="btn btn-info btn-sm">update</a>
                                 </td>
 
 
@@ -69,12 +66,12 @@
 
                         </tbody>
                     </table>
-                    <div class="text-center d-flex justify-content-center">
+                    <div class="text-center">
                         {{$orders->links()}}
                     </div>
                     @else
                     <h4 class="text-center">
-                        no search results were found
+                        no results were found
                     </h4>
                     @endif
                 </div>

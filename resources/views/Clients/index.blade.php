@@ -46,12 +46,10 @@
                         </td>
 
                         <td>
-                            <form action="{{route('client.destroy' , $client->id)}}" method="POST"
-                                style="display: inline-block">
-                                @method('DELETE')
-                                @csrf
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
+
+                            <button type="submit" class="btn btn-danger btn-sm" data-toggle="modal"
+                                data-target="#DeleteModal" data-url="{{'client', $client->id}}">Delete</button>
+                            @include('partials.Modals._deleteModal')
                             <a href="{{route('client.edit' , $client->id)}}" class="btn btn-info btn-sm">Update</a>
                         </td>
 

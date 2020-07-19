@@ -51,12 +51,13 @@ class UserController extends Controller
             'email' => 'required',
             'password' => 'required|confirmed',
             'permissions' => 'required',
-            'Image' => 'image|required'
+            'Image' => 'image|sometimes'
         ]);
         $data = request()->except('permissions', 'Image');
-
-        $this->StoreImage($request);
-        $data['Image'] = $request->Image->hashName();
+        if ($request->has('Image')) {
+            $this->StoreImage($request);
+            $data['Image'] = $request->Image->hashName();
+        }
         $user = User::create($data);
 
         $user->attachRole('admin');

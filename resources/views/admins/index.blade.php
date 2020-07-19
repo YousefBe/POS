@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+@include('partials.Modals._deleteModal')
+
 {{--This Page Doesn't Apply DRY concept , i know but i didn't want to keep wasting time with the ui *searched some time though*--}}
 <div class="container">
     @role('Super_admin')
@@ -115,9 +117,9 @@
                                 </td>
                                 @role('Super_admin')
                                 <td>
-                                    <button data-toggle="modal" data-target="#deleteAdminModal"
-                                        class="btn btn-danger">Delete</button>
-                                    @include('partials.Modals.AdminDeleteModals')
+                                    <button data-toggle="modal" data-target="#DeleteModal"
+                                        class="btn btn-danger DeleteModal"
+                                        data-url="{{url('user',$admin->id)}}">Delete</button>
 
                                 </td>
                                 <td>
@@ -169,11 +171,9 @@
                                 </td>
                                 @role('Super_admin|admin')
                                 <td>
-                                    <form action="{{route('user.destroy' , $user->id)}}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Delete</button>
-                                    </form>
+                                    <button data-toggle="modal" data-target="#DeleteModal"
+                                        class="btn btn-danger DeleteModal"
+                                        data-url="{{url('user',$user->id)}}">Delete</button>
                                 </td>
                                 <td>
                                     <a class="btn btn-primary" href="{{route('user.edit',$user->id)}}">Update</a>

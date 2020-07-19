@@ -23,7 +23,7 @@ class ProductController extends Controller
             return $q->where('category_id', $request->category);
         })->when($request->search, function ($qu) use ($request) {
             return $qu->Search('name', $request->search);
-        })->get();
+        })->paginate(5);
 
         return view('products.index', compact('products', 'categories'));
     }
@@ -45,11 +45,13 @@ class ProductController extends Controller
             'category_id' => 'required|integer',
             'stock' => 'required|integer',
             'description' => 'required',
-            'Image' => 'required|image'
+            'Image' => 'sometimes|image'
         ]);
         $data = request()->except('Image');
-        $data['Image'] = $request->Image->hashName();
-        $this->StoreImage($request);
+        if ($request->has('Image')) {
+            $data['Image'] = $request->Image->hashName();
+            $this->StoreImage($request);
+        }
         Product::create($data);
 
         session()->flash('product-added', 'Product was created successfully ');

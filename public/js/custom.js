@@ -42,6 +42,9 @@ $(document).ready(function () {
             }
         });
     });
+    $("#sidebarCollapse").on("click", function () {
+        $("#sidebar, #content , #showcase").toggleClass("active");
+    });
 
     //when we remove product from our orders
     $("body").on("click", ".remove-product-btn", function (e) {
@@ -86,3 +89,10 @@ function calc_price() {
         $("#add-order-btn").addClass("disabled");
     }
 }
+$(document).ready(function () {
+    // For A Delete Record Popup
+    $('.DeleteModal').click(function () {
+        var url = $(this).attr('data-url');
+        $("#deleteForm").attr("action", url);
+    });
+});

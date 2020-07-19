@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div class="container">
     <div class="d-flex justify-content-end mb-2">
         <a class="btn btn-success btn-sm" href="{{route('category.create')}}">Add new category</a>
@@ -35,12 +34,11 @@
                             </form>
                         </td>
                         <td>
-                            <form action="{{route('category.destroy' , $category->id)}}" method="POST"
-                                style="display: inline-block">
-                                @method('DELETE')
-                                @csrf
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
+
+
+                            <button class="btn btn-danger btn-sm DeleteModal" data-toggle="modal"
+                                data-target="#DeleteModal" data-url="{{url('category',$category->id)}}">Delete</button>
+                            @include('partials.Modals._deleteModal')
                             <a href="{{route('category.edit' , $category->id)}}" class="btn btn-info btn-sm">Update</a>
                         </td>
 
@@ -54,5 +52,6 @@
         </div>
     </div>
 </div>
+
 
 @endsection

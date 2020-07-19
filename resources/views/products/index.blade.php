@@ -72,12 +72,10 @@
                         <td>{{$product->stock}}</td>
                         <td class="text-center">
                             @role('Super_admin|admin')
-                            <form action="{{route('product.destroy' , $product->id)}}" method="POST"
-                                style="display: inline-block">
-                                @method('DELETE')
-                                @csrf
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                            </form>
+                            <button data-toggle="modal" data-target="#DeleteModal"
+                                class="btn btn-danger btn-sm DeleteModal"
+                                data-url="{{url('product', $product->id)}}">Delete</button>
+                            @include('partials.Modals._deleteModal')
 
                             <a href="{{route('product.edit' , $product->id)}}" class="btn btn-info btn-sm">Update</a>
                             @endrole
@@ -92,6 +90,7 @@
 
                 </tbody>
             </table>
+
             @else
             <h3 class="text-center">
                 no products yet :)
@@ -99,6 +98,11 @@
             @endif
         </div>
     </div>
+    @if($products->count() > 0)
+    <div class="text-center">
+        {{$products->links()}}
+    </div>
+    @endif
 </div>
 
 @endsection

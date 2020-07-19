@@ -5,61 +5,44 @@
     <div class="row">
         <div class="col-lg-3 col-6">
             <!-- small box -->
-            <div class="small-box bg-info">
-                <div class="inner">
-                    <h3>150</h3>
-
-                    <p>New Orders</p>
+            <div class="card text-center bg-primary p-2 text-white rounded-circle">
+                <div class="card-body">
+                    <h3>Clients</h3>
+                    <h4 class="display-4"><i class="fa fa-users mr-2" aria-hidden="true"></i>{{$clients->count()}}</h4>
+                    <a href="{{route('client.index')}}" class="btn btn-outline-light ">View</a>
                 </div>
-                <div class="icon">
-                    <i class="ion ion-bag"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-                <div class="inner">
-                    <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                    <p>Bounce Rate</p>
+            <div class="card text-center bg-success p-2 text-white rounded-circle">
+                <div class="card-body">
+                    <h3>Orders</h3>
+                    <h4 class="display-4"><i class="fa fa-users mr-2" aria-hidden="true"></i>{{$orders->count()}}</h4>
+                    <a href="{{route('order.index')}}" class="btn btn-outline-light ">View</a>
                 </div>
-                <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-                <div class="inner">
-                    <h3>44</h3>
-
-                    <p>User Registrations</p>
+            <div class="card text-center bg-warning p-2 text-white rounded-circle">
+                <div class="card-body">
+                    <h3>Categories</h3>
+                    <h4 class="display-4"><i class="fa fa-folder mr-2" aria-hidden="true"></i>{{$categories->count()}}
+                    </h4>
+                    <a href="{{route('client.index')}}" class="btn btn-outline-light ">View</a>
                 </div>
-                <div class="icon">
-                    <i class="ion ion-person-add"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-                <div class="inner">
-                    <h3>65</h3>
-
-                    <p>Unique Visitors</p>
+            <div class="card text-center bg-danger p-2 text-white rounded-circle">
+                <div class="card-body">
+                    <h3>Products</h3>
+                    <h4 class="display-4"><i class="fa fa-hand-o-right mr-2"
+                            aria-hidden="true"></i>{{$products->count()}}</h4>
+                    <a href="{{route('client.index')}}" class="btn btn-outline-light ">View</a>
                 </div>
-                <div class="icon">
-                    <i class="ion ion-pie-graph"></i>
-                </div>
-                <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
         </div>
         <!-- ./col -->
